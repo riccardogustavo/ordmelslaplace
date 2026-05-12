@@ -3,12 +3,9 @@ ord_mels <- function( fixed,
                       random,
                       fixed_scale,
                       latent_error_dist = c("logit", "probit"),
-                      nPoints,
                       data,
                       SEs = F,
                       starting_values = NULL,
-                      maxiter = 100,
-                      conv_tol = 1e-4,
                       trace = T,
                       nlminb_ctrl = list( eval.max = 500, iter.max = 350 )
                       ) {
@@ -19,10 +16,6 @@ ord_mels <- function( fixed,
 
   if ( missing( data ) || !is.data.frame( data ) ) {
     stop( "'data' must be a data.frame" )
-  }
-
-  if ( missing( nPoints ) || length( nPoints ) != 1 || !is.numeric( nPoints ) || is.na( nPoints ) || nPoints <= 0 ) {
-    stop( "'nPoints' must be a single positive numeric value")
   }
 
   if ( missing( latent_error_dist ) ) {
@@ -172,11 +165,9 @@ ord_mels <- function( fixed,
                       X = X, Zis = Zis, W = W, Wis = Wis, clust_ind = clust_ind,
                      parm_table = parm_table, n_clusters = n_clusters,
                      categ = categ, n_thresh = n_thresh,
-                     nPoints = nPoints, dimension = dimension,
-                     maxiter = maxiter, latent_error_dist = latent_error_dist,
+                     dimension = dimension,
+                     latent_error_dist = latent_error_dist,
                      SEs = SEs,
-                     trace = trace,
-                     conv_tol = conv_tol,
                      nlminb_ctrl = nlminb_ctrl )
 
   ll <- result$ll

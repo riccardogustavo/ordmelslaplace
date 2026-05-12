@@ -33,6 +33,10 @@ ll_score_fy <- function( d, yi, Xi, Xbi, Zi, Wi, Wbi, thresh, thresh_raw,
     Wij <- Wi[ j, ]
     yij <- yi[ j ]
 
+    ## beachte:
+    # O ist abhängig von m_loc ist abhängig von parm
+    # b ist abhängig von m_scale ist abhängig von parm
+
     O <- Xbi[ j, ] + ( Zij %*% m_loc )
 
 
